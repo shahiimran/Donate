@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডোনেশন পেজ | Donation Page</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: linear-gradient(135deg, #f06, #4c4cff);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            font-size: 48px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .main-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 50px;
+            margin-top: 50px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        .heading {
+            font-size: 32px;
+            color: #f9c74f;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .subheading {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 25px;
+        }
+        .address-box {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            word-wrap: break-word;
+            color: #ffeb3b;
+            font-size: 18px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .copy-btn {
+            background-color: #00c853;
+            border: none;
+            padding: 8px 16px;
+            color: white;
+            font-size: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .btn-donate {
+            padding: 15px 40px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 20px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        .btn-donate:hover {
+            background-color: #d85f50;
+        }
+        .note {
+            font-size: 16px;
+            color: #cccccc;
+            margin-top: 20px;
+        }
+        .qr-code {
+            margin-top: 30px;
+        }
+        input[type="number"] {
+            padding: 12px;
+            width: 50%;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid #00bcd4;
+            background-color: #333;
+            color: #fff;
+            font-size: 18px;
+            outline: none;
+        }
+        input[type="number"]:focus {
+            border: 2px solid #ff5722;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>ডোনেশন পেজ | Donation Page</h1>
+        <p class="heading">আপনার সহায়তা প্রয়োজন | We Need Your Help</p>
+        <p class="subheading">নিচের TRC20 ঠিকানায় USDT পাঠিয়ে সাহায্য করতে পারেন:</p>
+
+        <!-- Donation Address Box -->
+        <div class="address-box">
+            <p id="walletAddress">TCExfm2zaBUt3VSWNkzkSyN1n7B1AQwFmW</p>
+            <button class="copy-btn" onclick="copyAddress()">ঠিকানা কপি করুন | Copy Address</button>
+        </div>
+
+        <input type="number" placeholder="পরিমাণ দিন | Enter Amount" id="amountInput" />
+
+        <br>
+        <a href="trust://send?address=TCExfm2zaBUt3VSWNkzkSyN1n7B1AQwFmW&amount=10" target="_blank">
+            <button class="btn-donate">Trust Wallet দিয়ে পাঠান</button>
+        </a>
+
+        <div class="qr-code">
+            <p>অথবা নিচে QR কোড স্ক্যান করুন:</p>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=TCExfm2zaBUt3VSWNkzkSyN1n7B1AQwFmW&size=150x150" alt="Scan to donate">
+        </div>
+
+        <div style="margin-top: 30px;">
+            <p class="subheading">ঠিকানাটি আবার নিচে দেয়া হল, চাইলে এখান থেকেও কপি করতে পারেন:</p>
+            <div class="address-box">
+                <p id="walletAddress2">TCExfm2zaBUt3VSWNkzkSyN1n7B1AQwFmW</p>
+                <button class="copy-btn" onclick="copyAddress('walletAddress2')">কপি করুন</button>
+            </div>
+        </div>
+
+        <p class="note">USDT পাঠানোর সময় TRC20 নেটওয়ার্ক সিলেক্ট করুন। | Use TRC20 Network when sending USDT.</p>
+    </div>
+
+    <script>
+        function copyAddress(id = 'walletAddress') {
+            const address = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(address).then(() => {
+                alert("ঠিকানা কপি হয়েছে!");
+            });
+        }
+    </script>
+
+</body>
+</html>
